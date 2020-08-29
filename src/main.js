@@ -1,13 +1,39 @@
 import Vue from 'vue'
 import App from './App.vue'
-import './registerServiceWorker'
+import Vuelidate from "vuelidate";
 import router from './router'
 import store from './store'
+import dateFilter from '@/filters/date.filter'
+import messagePlugin from './utils/message.plugin'
+import './registerServiceWorker'
+import 'materialize-css/dist/js/materialize.min'
+const firebase = require('firebase/app');
+require('firebase/auth');
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+Vue.use(Vuelidate)
+Vue.use(messagePlugin)
+Vue.filter('date', dateFilter)
+
+
+firebase.initializeApp({
+  apiKey: "AIzaSyB3fyTwxWu1ELpjdKZQwTZC05k2uooQIeE",
+  authDomain: "vue-srm-c47db.firebaseapp.com",
+  databaseURL: "https://vue-srm-c47db.firebaseio.com",
+  projectId: "vue-srm-c47db",
+  storageBucket: "vue-srm-c47db.appspot.com",
+  messagingSenderId: "854435711536",
+  appId: "1:854435711536:web:358305ee3967d0d3627bf5"
+})
+let app
+firebase.default.auth().onAuthStateChanged(() => {
+  if (!app){
+    app = new Vue({
+      router,
+      store,
+      render: h => h(App)
+    }).$mount('#app')
+  }
+})
+
