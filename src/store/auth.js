@@ -1,5 +1,6 @@
-import firebase from "firebase/app";
-
+const firebase = require('firebase/app');
+require('firebase/auth');
+require('firebase/database');
 export default {
     actions: {
         async login({dispatch, commit}, {email, password}) {
@@ -24,8 +25,9 @@ export default {
 
             }
         },
-        async logout() {
+        async logout({commit}) {
             await firebase.auth().signOut()
+             commit('clearInfo')
         },
         getUid() {
             const user = firebase.auth().currentUser

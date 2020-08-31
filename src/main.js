@@ -5,6 +5,8 @@ import router from './router'
 import store from './store'
 import dateFilter from '@/filters/date.filter'
 import messagePlugin from './utils/message.plugin'
+import Loader from './components/app/Loader'
+import currencyFilter from "@/filters/currency.filter";
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
 const firebase = require('firebase/app');
@@ -15,16 +17,18 @@ Vue.config.productionTip = false
 Vue.use(Vuelidate)
 Vue.use(messagePlugin)
 Vue.filter('date', dateFilter)
+Vue.component('Loader', Loader)
+Vue.filter('currency', currencyFilter)
 
 
 firebase.initializeApp({
-  apiKey: "AIzaSyB3fyTwxWu1ELpjdKZQwTZC05k2uooQIeE",
-  authDomain: "vue-srm-c47db.firebaseapp.com",
-  databaseURL: "https://vue-srm-c47db.firebaseio.com",
-  projectId: "vue-srm-c47db",
-  storageBucket: "vue-srm-c47db.appspot.com",
-  messagingSenderId: "854435711536",
-  appId: "1:854435711536:web:358305ee3967d0d3627bf5"
+    apiKey: "AIzaSyB3fyTwxWu1ELpjdKZQwTZC05k2uooQIeE",
+    authDomain: "vue-srm-c47db.firebaseapp.com",
+    databaseURL: "https://vue-srm-c47db.firebaseio.com",
+    projectId: "vue-srm-c47db",
+    storageBucket: "vue-srm-c47db.appspot.com",
+    messagingSenderId: "854435711536",
+    appId: "1:854435711536:web:358305ee3967d0d3627bf5"
 })
 let app
 firebase.default.auth().onAuthStateChanged(() => {
