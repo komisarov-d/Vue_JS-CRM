@@ -7,14 +7,14 @@
             id="email"
             type="text"
             v-model.trim="email"
-            :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}"
+            :class="{invalid: (this.$v.email.$dirty && !this.$v.email.required) || (this.$v.email.$dirty && !this.$v.email.email)}"
         >
         <label for="email">Email</label>
         <small class="helper-text invalid"
-               v-if="$v.email.$dirty && !$v.email.required"
+               v-if="this.$v.email.$dirty && !this.$v.email.required"
         >Поле Email не должно быть пустым</small>
         <small class="helper-text invalid"
-               v-else-if="$v.email.$dirty && !$v.email.email"
+               v-else-if="this.$v.email.$dirty && !this.$v.email.email"
         >Введите коректный Email </small>
       </div>
       <div class="input-field">
@@ -22,14 +22,14 @@
             id="password"
             type="password"
             v-model.trim="password"
-            :class="{invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.$dirty && !$v.password.minLength)}"
+            :class="{invalid: (this.$v.password.$dirty && !this.$v.password.required) || (this.$v.password.$dirty && !this.$v.password.minLength)}"
         >
         <label for="password">Пароль</label>
         <small class="helper-text invalid"
-               v-if="$v.password.$dirty && !$v.password.required"
+               v-if="this.$v.password.$dirty && !this.$v.password.required"
         >Введите пароль</small>
         <small class="helper-text invalid"
-               v-else-if="$v.password.$dirty && !$v.password.minLength"
+               v-else-if="this.$v.password.$dirty && !this.$v.password.minLength"
         >Пароль не должен быть меньше {{ $v.password.$params.minLength.min }} символов </small>
       </div>
     </div>

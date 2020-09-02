@@ -22,6 +22,7 @@ export default {
                 })
             } catch (e) {
                 commit('setError', e)
+                throw e
 
             }
         },
