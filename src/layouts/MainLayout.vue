@@ -23,6 +23,7 @@
 import Navbar from "@/components/app/Navbar";
 import Sidebar from "@/components/app/Sidebar";
 import MainBtn from "@/components/app/MainBtn";
+import messages from "@/utils/messages";
 
 export default {
   name: 'main-layout',
@@ -39,6 +40,16 @@ export default {
   components: {
     MainBtn,
     Navbar, Sidebar
+  },
+  computed:{
+    error(){
+      return this.$store.getters.error
+    }
+  },
+  watch:{
+    error(fbError){
+      this.$error(messages[fbError.code] || 'Что то пошло не так')
+    }
   }
 
 }
