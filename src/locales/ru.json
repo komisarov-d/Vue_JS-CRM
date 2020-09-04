@@ -4,7 +4,7 @@
   "Update": "Обновить",
   "Message_EnterName": "Введите ваше имя",
   "Create": "Создать",
-  "Logout": "Выйти",
+  "Logout": "Вы вышли из системы",
   "CreateNewRecord": "Создать новую запись",
   "Bill": "Счет",
   "Menu_History": "История",
@@ -32,9 +32,9 @@
   "Error": "Ошибка",
   "LogoutMessage": "Вы вышли из системы",
   "LoginMessage": "Для начала войдите в систему",
-  "auth/user-not-found": "Пользователя с таким email не существует",
-  "auth/wrong-password": "Неверный пароль",
-  "auth/email-already-in-use": "Email уже занят",
+  "NoUserWithEmail": "Пользователя с таким email не существует",
+  "WrongPassword": "Неверный пароль",
+  "EmailInUse": "Email уже занят",
   "Categories": "Категории",
   "NoCategories": "Категорий пока нет.",
   "NoRecord": "Запись отсутствует.",
@@ -58,5 +58,8 @@
   "Message_CreateSuccess": "Запись успешно создана",
   "Message_NotEnoughMoney": "Недостаточно средств на счете",
   "Back": "Назад",
-  "Forward": "Вперед"
+  "Forward": "Вперед",
+  "Registration": "Регистрация",
+"Exit": "Выйти",
+  "login": "Вход"
 }

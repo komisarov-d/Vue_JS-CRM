@@ -9,6 +9,7 @@ import Loader from './components/app/Loader'
 import currencyFilter from "@/filters/currency.filter";
 import tooltipDirective from '@/directives/tooltip.directive'
 import localizeFilter from "@/filters/localize.filter";
+import TitlePlugin from './utils/title.plugin'
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
 
@@ -21,12 +22,15 @@ Vue.component('paginate', Paginate)
 
 Vue.use(Vuelidate)
 Vue.use(messagePlugin)
+Vue.use(TitlePlugin)
 Vue.filter('date', dateFilter)
 Vue.filter('localize', localizeFilter)
 Vue.directive('tooltip', tooltipDirective)
 Vue.component('Loader', Loader)
 Vue.filter('currency', currencyFilter)
+import VueMeta from 'vue-meta'
 
+Vue.use(VueMeta)
 
 firebase.initializeApp({
     apiKey: "AIzaSyB3fyTwxWu1ELpjdKZQwTZC05k2uooQIeE",

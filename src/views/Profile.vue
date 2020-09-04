@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>{{'ProfileTitle' | localize}}</h3>
+      <h3>{{ 'ProfileTitle' | localize }}</h3>
     </div>
 
     <form class="form" @submit.prevent="submitHandler">
@@ -13,10 +13,10 @@
             :class="{invalid: (this.$v.name.$dirty && !this.$v.name.required) || (this.$v.name.$dirty && !this.$v.name.minLength)}"
 
         >
-        <label for="description">{{'Name' | localize}}</label>
+        <label for="description">{{ 'Name' | localize }}</label>
         <small class="helper-text invalid"
                v-if="this.$v.name.$dirty && !this.$v.name.required"
-        >{{"Message_EnterName" | localize}}</small>
+        >{{ "Message_EnterName" | localize }}</small>
         <small class="helper-text invalid"
                v-else-if="this.$v.name.$dirty && !this.$v.name.minLength"
         >Имя не должно быть меньше {{ $v.name.$params.minLength.min }} символов </small>
@@ -30,7 +30,7 @@
         </label>
       </div>
       <button class="btn waves-effect waves-light" type="submit">
-        {{'Update' | localize}}
+        {{ 'Update' | localize }}
         <i class="material-icons right">send</i>
       </button>
     </form>
@@ -41,9 +41,15 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import {minLength, required} from "vuelidate/lib/validators";
+import localizeFilter from "@/filters/localize.filter";
 
 export default {
   name: 'Profile',
+  metaInfo() {
+    return {
+      title: this.$title('ProfileTitle')
+    }
+  },
   computed: {
     ...mapGetters(['info'])
   },
@@ -76,10 +82,8 @@ export default {
         })
       } catch (e) {
       }
-
     }
   }
-
 }
 </script>
 

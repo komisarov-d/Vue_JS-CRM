@@ -91,6 +91,11 @@ import localizeFilter from "@/filters/localize.filter";
 
 export default {
   name: 'Record',
+  metaInfo() {
+    return {
+      title: this.$title('NewRecord')
+    }
+  },
   async mounted() {
     this.categories = await this.$store.dispatch("fetchCategories")
     this.loading = false
