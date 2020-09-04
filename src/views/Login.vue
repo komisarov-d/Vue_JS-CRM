@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
-      <span class="card-title">Домашняя бухгалтерия</span>
+      <span class="card-title">{{'HomeBookkeeping' | localize}}</span>
       <div class="input-field">
         <input
             id="email"
@@ -12,10 +12,10 @@
         <label for="email">Email</label>
         <small class="helper-text invalid"
                v-if="this.$v.email.$dirty && !this.$v.email.required"
-        >Поле Email не должно быть пустым</small>
+        >{{'Message_NoEmail' | localize}}</small>
         <small class="helper-text invalid"
                v-else-if="this.$v.email.$dirty && !this.$v.email.email"
-        >Введите коректный Email </small>
+        >{{'Message_InvalidEmail' | localize}} </small>
       </div>
       <div class="input-field">
         <input
@@ -24,10 +24,10 @@
             v-model.trim="password"
             :class="{invalid: (this.$v.password.$dirty && !this.$v.password.required) || (this.$v.password.$dirty && !this.$v.password.minLength)}"
         >
-        <label for="password">Пароль</label>
+        <label for="password">{{'Password' | localize}}</label>
         <small class="helper-text invalid"
                v-if="this.$v.password.$dirty && !this.$v.password.required"
-        >Введите пароль</small>
+        >{{'Message_EnterPassword' | localize}}</small>
         <small class="helper-text invalid"
                v-else-if="this.$v.password.$dirty && !this.$v.password.minLength"
         >Пароль не должен быть меньше {{ $v.password.$params.minLength.min }} символов </small>

@@ -8,17 +8,21 @@ import messagePlugin from './utils/message.plugin'
 import Loader from './components/app/Loader'
 import currencyFilter from "@/filters/currency.filter";
 import tooltipDirective from '@/directives/tooltip.directive'
+import localizeFilter from "@/filters/localize.filter";
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
+
 const firebase = require('firebase/app');
 require('firebase/auth');
 import Paginate from 'vuejs-paginate'
+
 Vue.config.productionTip = false
 Vue.component('paginate', Paginate)
 
 Vue.use(Vuelidate)
 Vue.use(messagePlugin)
 Vue.filter('date', dateFilter)
+Vue.filter('localize', localizeFilter)
 Vue.directive('tooltip', tooltipDirective)
 Vue.component('Loader', Loader)
 Vue.filter('currency', currencyFilter)
@@ -35,12 +39,12 @@ firebase.initializeApp({
 })
 let app
 firebase.default.auth().onAuthStateChanged(() => {
-  if (!app){
-    app = new Vue({
-      router,
-      store,
-      render: h => h(App)
-    }).$mount('#app')
-  }
+    if (!app) {
+        app = new Vue({
+            router,
+            store,
+            render: h => h(App)
+        }).$mount('#app')
+    }
 })
 
